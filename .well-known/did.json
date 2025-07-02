@@ -1,0 +1,27 @@
+{
+  "id": "did:web:shubampednekar.github.io:staticweb:",
+  "verificationMethod": [
+    {
+      "type": "Bls12381G2Key2020",
+      "id": "did:web:shubampednekar.github.io:staticweb:#keys-1",
+      "controller": "did:web:shubampednekar.github.io:staticweb:",
+      "publicKeyBase58": "21xgDgWLLPjETXgo8NBNN2AmwDvhLCRPuiHiMgsoAFQzWSw4V7SzAs3AKNNPvZhATWyEDjokpiBqDQdTGSFP1erZC8wnWp3Y6TQnrfJhqbwZVDBEGBFeZomXA4g5DcrjDrki"
+    }
+  ],
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/bls12381-2020/v1"
+  ],
+  "authentication": [
+    "did:web:shubampednekar.github.io:staticweb:#keys-1"
+  ],
+  "assertionMethod": [
+    "did:web:shubampednekar.github.io:staticweb:#keys-1"
+  ],
+  "capabilityInvocation": [
+    "did:web:shubampednekar.github.io:staticweb:#keys-1"
+  ],
+  "capabilityDelegation": [
+    "did:web:shubampednekar.github.io:staticweb:#keys-1"
+  ]
+}
