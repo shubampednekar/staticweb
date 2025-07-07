@@ -1,19 +1,102 @@
 {
-    "@context": {
-      "@version": 1.1,
-      "@protected": true,
-      "WireTransfer": {
-        "@id": "https://docushieldapi.managedcoder.com/terms#BillOfLading",
-        "@type": "@id",
-        "@context": {
-          "@protected": true,
-          "billOfLadingName": {
-            "@id": "https://docushieldapi.managedcoder.com/terms#billOfLadingName"
-          },
-          "scac": {
-            "@id": "https://docushieldapi.managedcoder.com/terms#scac"
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "WireTransferData": {
+      "@id": "https://docushieldapi.managedcoder.com/terms#WireTransferData",
+      "@type": "@id",
+      "@context": {
+        "@protected": true,
+        "senderInfo": {
+          "@id": "https://docushieldapi.managedcoder.com/terms#senderInfo",
+          "@context": {
+            "address": {
+              "@id": "https://docushieldapi.managedcoder.com/terms#address",
+              "@context": {
+                "street": { "@id": "https://docushieldapi.managedcoder.com/terms#street" },
+                "city": { "@id": "https://docushieldapi.managedcoder.com/terms#city" },
+                "state": { "@id": "https://docushieldapi.managedcoder.com/terms#state" },
+                "zipCode": { "@id": "https://docushieldapi.managedcoder.com/terms#zipCode" },
+                "country": { "@id": "https://docushieldapi.managedcoder.com/terms#country" }
+              }
+            },
+            "bankInfo": {
+              "@id": "https://docushieldapi.managedcoder.com/terms#bankInfo",
+              "@context": {
+                "name": { "@id": "https://docushieldapi.managedcoder.com/terms#bankName" },
+                "routingNumber": { "@id": "https://docushieldapi.managedcoder.com/terms#routingNumber" },
+                "swiftCode": { "@id": "https://docushieldapi.managedcoder.com/terms#swiftCode" }
+              }
+            },
+            "name": { "@id": "https://docushieldapi.managedcoder.com/terms#senderName" },
+            "accountNumber": { "@id": "https://docushieldapi.managedcoder.com/terms#senderAccountNumber" },
+            "phone": { "@id": "https://docushieldapi.managedcoder.com/terms#senderPhone" },
+            "email": { "@id": "https://docushieldapi.managedcoder.com/terms#senderEmail" }
           }
-        }
+        },
+        "recipientInfo": {
+          "@id": "https://docushieldapi.managedcoder.com/terms#recipientInfo",
+          "@context": {
+            "address": {
+              "@id": "https://docushieldapi.managedcoder.com/terms#address",
+              "@context": {
+                "street": { "@id": "https://docushieldapi.managedcoder.com/terms#street" },
+                "city": { "@id": "https://docushieldapi.managedcoder.com/terms#city" },
+                "country": { "@id": "https://docushieldapi.managedcoder.com/terms#country" }
+              }
+            },
+            "bankInfo": {
+              "@id": "https://docushieldapi.managedcoder.com/terms#bankInfo",
+              "@context": {
+                "name": { "@id": "https://docushieldapi.managedcoder.com/terms#bankName" },
+                "swiftCode": { "@id": "https://docushieldapi.managedcoder.com/terms#swiftCode" }
+              }
+            },
+            "name": { "@id": "https://docushieldapi.managedcoder.com/terms#recipientName" },
+            "accountNumber": { "@id": "https://docushieldapi.managedcoder.com/terms#recipientAccountNumber" }
+          }
+        },
+        "transferDetails": {
+          "@id": "https://docushieldapi.managedcoder.com/terms#transferDetails",
+          "@context": {
+            "amount": { "@id": "https://docushieldapi.managedcoder.com/terms#amount" },
+            "currency": { "@id": "https://docushieldapi.managedcoder.com/terms#currency" },
+            "purpose": { "@id": "https://docushieldapi.managedcoder.com/terms#purpose" },
+            "expectedDate": { "@id": "https://docushieldapi.managedcoder.com/terms#expectedDate", "@type": "xsd:dateTime" },
+            "urgency": { "@id": "https://docushieldapi.managedcoder.com/terms#urgency" }
+          }
+        },
+        "compliance": {
+          "@id": "https://docushieldapi.managedcoder.com/terms#compliance",
+          "@context": {
+            "sourceOfFunds": { "@id": "https://docushieldapi.managedcoder.com/terms#sourceOfFunds" },
+            "purposeCode": { "@id": "https://docushieldapi.managedcoder.com/terms#purposeCode" },
+            "kycDocuments": { "@id": "https://docushieldapi.managedcoder.com/terms#kycDocuments", "@container": "@set" }
+          }
+        },
+        "metadata": {
+          "@id": "https://docushieldapi.managedcoder.com/terms#metadata",
+          "@context": {
+            "version": { "@id": "https://docushieldapi.managedcoder.com/terms#version" },
+            "tags": { "@id": "https://docushieldapi.managedcoder.com/terms#tags", "@container": "@set" },
+            "priority": { "@id": "https://docushieldapi.managedcoder.com/terms#priority" }
+          }
+        },
+        "createdBy": {
+          "@id": "https://docushieldapi.managedcoder.com/terms#createdBy",
+          "@context": {
+            "_id": { "@id": "https://docushieldapi.managedcoder.com/terms#creatorId" },
+            "email": { "@id": "https://docushieldapi.managedcoder.com/terms#creatorEmail" },
+            "firstName": { "@id": "https://docushieldapi.managedcoder.com/terms#creatorFirstName" },
+            "lastName": { "@id": "https://docushieldapi.managedcoder.com/terms#creatorLastName" },
+            "role": { "@id": "https://docushieldapi.managedcoder.com/terms#creatorRole" }
+          }
+        },
+        "createdAt": { "@id": "https://docushieldapi.managedcoder.com/terms#createdAt", "@type": "xsd:dateTime" },
+        "updatedAt": { "@id": "https://docushieldapi.managedcoder.com/terms#updatedAt", "@type": "xsd:dateTime" },
+        "formNumber": { "@id": "https://docushieldapi.managedcoder.com/terms#formNumber" },
+        "xsd": "http://www.w3.org/2001/XMLSchema#"
       }
     }
   }
+}
